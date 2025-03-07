@@ -1,61 +1,239 @@
-body, html {
+/* styles.css */
+:root {
+    --primary: #3B82F6;
+    --secondary: #6366F1;
+    --background: radial-gradient(circle at top left, #0F172A, #1E293B);
+    --glass: rgba(255, 255, 255, 0.05);
+    --text-light: rgba(255, 255, 255, 0.9);
+    --text-lighter: rgba(255, 255, 255, 0.7);
+    --blur: blur(16px);
+}
+
+* {
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-image: url('https://example.com/your-background-image.jpg'); /* Replace with your own image URL */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    box-sizing: border-box;
 }
 
-header {
-    background-color: rgba(0, 0, 0, 0.85);
-    color: #FFF;
-    padding: 20px;
-    text-align: center;
-}
-
-main {
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--background);
+    color: var(--text-light);
+    min-height: 100vh;
+    line-height: 1.6;
+    overflow-x: hidden;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 80vh;
-    padding: 20px;
+    flex-direction: column;
+}
+
+.background-animation {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    background: linear-gradient(45deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+    z-index: -1;
+    animation: grain 8s steps(10) infinite;
+}
+
+@keyframes grain {
+    0%, 100% { transform: translate(0, 0) }
+    10% { transform: translate(-5%, -10%) }
+    30% { transform: translate(3%, -15%) }
+    50% { transform: translate(-12%, 7%) }
+    70% { transform: translate(9%, 25%) }
+    90% { transform: translate(-1%, 10%) }
+}
+
+.header-glass {
+    padding: 4rem 2rem 2rem;
+    text-align: center;
+    background: var(--glass);
+    backdrop-filter: var(--blur);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gradient-text {
+    background: linear-gradient(45deg, #fff, #3B82F6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
 }
 
 .grid-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    max-width: 960px;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-grow: 1;
 }
 
-.contact-item {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+.contact-card {
+    background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    min-height: 240px;
+    backdrop-filter: var(--blur);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+}
+
+.contact-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.15),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.contact-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+}
+
+.contact-card:hover::before {
+    left: 100%;
+}
+
+a {
+    color: inherit; /* Mantiene il colore del testo genitore */
+    text-decoration: none; /* Rimuove la sottolineatura */
+}
+
+.header-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-lighter);
+}
+
+.icon-wrapper {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+
+.icon-blur {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    filter: blur(12px);
+    opacity: 0.4;
+}
+
+.card-content {
+    position: relative;
+    z-index: 1;
     text-align: center;
-    transition: transform 0.3s ease;
+    width: 100%;
 }
 
-.contact-item i {
-    font-size: 30px;
-    color: #333;
-    margin-bottom: 15px;
+.card-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-light);
 }
 
-.contact-item a {
-    color: #333;
-    text-decoration: none;
-    font-weight: bold;
+.card-content p {
+    color: var(--text-lighter);
+    font-size: 0.9rem;
+    margin: 0.3rem 0;
 }
 
-.contact-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+/* Brand Specific Colors */
+.email { --brand: #EA4335; }
+.whatsapp { --brand: #25D366; }
+.instagram { --brand: #E1306C; }
+.telegram { --brand: #0088CC; }
+
+.contact-card .icon-wrapper i {
+    color: white;
+    font-size: 1.8rem;
+}
+
+.icon-wrapper,
+.contact-card:hover {
+    background: radial-gradient(circle at top left, 
+        color-mix(in srgb, var(--brand) 30%, transparent),
+        color-mix(in srgb, var(--brand) 70%, transparent));
+}
+
+.footer-glass {
+    margin-top: auto;
+    padding: 2rem;
+    background: var(--glass);
+    backdrop-filter: var(--blur);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.footer-content p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        padding: 1rem;
+    }
+    
+    .gradient-text {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .gradient-text {
+        font-size: 2rem;
+    }
+    
+    .icon-wrapper {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .contact-card {
+        min-height: 200px;
+        padding: 1rem;
+    }
+    
+    .header-glass {
+        padding: 3rem 1.5rem 1.5rem;
+    }
 }

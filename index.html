@@ -1,35 +1,86 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lost Luggage Info</title>
+    <title>Lost Luggage Assistance | Contact Portal</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7fb82bd93c.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Lost Luggage Contact Portal">
+    <meta name="description" content="Immediate contact portal for lost luggage assistance. Help reunite Alex with his belongings through multiple direct channels.">
 </head>
 <body>
-    <header>
-        <h1>Welcome to Lost Luggage Assistance</h1>
+    <div class="background-animation"></div>
+    
+    <header class="header-glass">
+        <div class="header-content">
+            <h1 class="gradient-text">Luggage Recovery</h1>
+            <p class="subtitle">Below you'll find some of my contacts</p>
+        </div>
     </header>
+
     <main>
         <div class="grid-container">
-            <div class="contact-item">
-                <i class="fas fa-envelope"></i>
-                <p><a href="mailto:alex.sarac96@gmail.com">Email Us</a></p>
-            </div>
-            <div class="contact-item">
-                <i class="fab fa-whatsapp"></i>
-                <p><a href="https://wa.me/393498520241">Message on WhatsApp</a></p>
-            </div>
-            <div class="contact-item">
-                <i class="fab fa-instagram"></i>
-                <p><a href="https://instagram.com/ale_sarac">DM on Instagram</a></p>
-            </div>
-            <div class="contact-item">
-                <i class="fab fa-telegram-plane"></i>
-                <p><a href="https://t.me/Aleeee96">Contact on Telegram</a></p>
-            </div>
+            <!-- Email Card -->
+            <a href="mailto:alex.sarac96@gmail.com" class="contact-card email">
+                <div class="icon-wrapper">
+                    <div class="icon-blur"></div>
+                    <i class="fas fa-envelope-open-text"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Email Direct</h3>
+                    <p>alex.sarac96@gmail.com</p>
+                </div>
+            </a>
+
+            <!-- WhatsApp Card -->
+            <a href="https://wa.me/393498520241" target="_blank" class="contact-card whatsapp">
+                <div class="icon-wrapper">
+                    <div class="icon-blur"></div>
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <div class="card-content">
+                    <h3>WhatsApp Chat</h3>
+                    <p>+39 349 8520241</p>
+                </div>
+            </a>
+
+            <!-- Instagram Card -->
+            <a href="https://instagram.com/ale_sarac" target="_blank" class="contact-card instagram">
+                <div class="icon-wrapper">
+                    <div class="icon-blur"></div>
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Instagram DM</h3>
+                    <p>@ale_sarac</p>
+                </div>
+            </a>
+
+            <!-- Telegram Card -->
+            <a href="https://t.me/Aleeee96" target="_blank" class="contact-card telegram">
+                <div class="icon-wrapper">
+                    <div class="icon-blur"></div>
+                    <i class="fab fa-telegram-plane"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Telegram Message</h3>
+                    <p>@Aleeee96</p>
+                </div>
+            </a>
         </div>
     </main>
+
+    <footer class="footer-glass">
+        <div class="footer-content">
+            <p>🙏 Thank you for your kindness!</p>
+        </div>
+    </footer>
 </body>
 </html>
