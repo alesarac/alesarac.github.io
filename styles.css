@@ -1,4 +1,3 @@
-/* styles.css */
 :root {
     --primary: #3B82F6;
     --secondary: #6366F1;
@@ -115,8 +114,8 @@ body {
 }
 
 a {
-    color: inherit; /* Mantiene il colore del testo genitore */
-    text-decoration: none; /* Rimuove la sottolineatura */
+    color: inherit; 
+    text-decoration: none; 
 }
 
 .header-content {
@@ -168,7 +167,7 @@ a {
     margin: 0.3rem 0;
 }
 
-/* Brand Specific Colors */
+
 .email { --brand: #EA4335; }
 .whatsapp { --brand: #25D366; }
 .instagram { --brand: #E1306C; }
