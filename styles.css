@@ -77,7 +77,6 @@ body {
     background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
     border-radius: 1.5rem;
     padding: 1.5rem;
-    min-height: 240px;
     backdrop-filter: var(--blur);
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
@@ -124,11 +123,42 @@ a {
 }
 
 .subtitle {
-    font-size: 1.3rem;
-    margin-bottom: 1.5rem;
+    display: block;
+    text-align: left;
+    font-size: 1.1rem;
     color: var(--text-lighter);
 }
 
+.subtitle-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem 0;
+}
+
+.language-line {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0.8rem 0;
+    padding: 0.4rem 0;
+    line-height: 1.4;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.language-line:hover {
+    background: rgba(255, 255, 255, 0.03);
+    transform: translateX(5px);
+}
+
+.flag-icon {
+    width: 2em;
+    height: 1.5em;
+    object-fit: cover;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+}
 .icon-wrapper {
     width: 60px;
     height: 60px;
@@ -217,22 +247,35 @@ a {
     }
 }
 
-@media (max-width: 640px) {
-    .gradient-text {
-        font-size: 2rem;
+@media (max-width: 768px) {
+    .language-line {
+        gap: 0.8rem;
+        margin: 0.6rem 0;
     }
     
-    .icon-wrapper {
-        width: 50px;
-        height: 50px;
+    .flag-icon {
+        width: 1.8em;
+        height: 1.3em;
     }
     
+    .subtitle {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
     .contact-card {
-        min-height: 200px;
-        padding: 1rem;
+        min-height: auto;
+        padding: 1.2rem;
     }
     
-    .header-glass {
-        padding: 3rem 1.5rem 1.5rem;
+    .language-line {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .flag-icon {
+        width: 1.6em;
+        height: 1.1em;
     }
 }
