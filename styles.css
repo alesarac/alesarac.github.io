@@ -1,10 +1,10 @@
 :root {
     --primary: #3B82F6;
     --secondary: #6366F1;
-    --background: radial-gradient(circle at top left, #0F172A, #1E293B);
-    --glass: rgba(255, 255, 255, 0.05);
+    --background: linear-gradient(to bottom right, #0F172A 0%, #1E293B 50%, #312e81 100%);
+    --glass: rgba(255, 255, 255, 0.1);
     --text-light: rgba(255, 255, 255, 0.9);
-    --text-lighter: rgba(255, 255, 255, 0.7);
+    --text-lighter: rgba(255, 255, 255, 0.8);
     --blur: blur(16px);
 }
 
@@ -25,24 +25,9 @@ body {
     flex-direction: column;
 }
 
-.background-animation {
-    position: fixed;
-    top: -50%;
-    left: -50%;
-    right: -50%;
-    bottom: -50%;
-    background: linear-gradient(45deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
-    z-index: -1;
-    animation: grain 8s steps(10) infinite;
-}
-
-@keyframes grain {
-    0%, 100% { transform: translate(0, 0) }
-    10% { transform: translate(-5%, -10%) }
-    30% { transform: translate(3%, -15%) }
-    50% { transform: translate(-12%, 7%) }
-    70% { transform: translate(9%, 25%) }
-    90% { transform: translate(-1%, 10%) }
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
 .header-glass {
@@ -53,80 +38,19 @@ body {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.header-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 .gradient-text {
-    background: linear-gradient(45deg, #fff, #3B82F6);
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
-}
-
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    padding: 1.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    flex-grow: 1;
-}
-
-.contact-card {
-    background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-    border-radius: 1.5rem;
-    padding: 1.5rem;
-    backdrop-filter: var(--blur);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.contact-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.15),
-        transparent
-    );
-    transition: 0.5s;
-}
-
-.contact-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.3);
-}
-
-.contact-card:hover::before {
-    left: 100%;
-}
-
-a {
-    color: inherit; 
-    text-decoration: none; 
-}
-
-.header-content {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.subtitle {
-    display: block;
-    text-align: left;
-    font-size: 1.1rem;
-    color: var(--text-lighter);
 }
 
 .subtitle-container {
@@ -142,13 +66,11 @@ a {
     margin: 0.8rem 0;
     padding: 0.4rem 0;
     line-height: 1.4;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
+    transition: background 0.3s ease;
 }
 
 .language-line:hover {
-    background: rgba(255, 255, 255, 0.03);
-    transform: translateX(5px);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .flag-icon {
@@ -159,6 +81,55 @@ a {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     flex-shrink: 0;
 }
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-grow: 1;
+}
+
+.contact-card {
+    background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    backdrop-filter: var(--blur);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contact-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+    transition: 0.5s;
+}
+
+.contact-card:hover {
+    background: radial-gradient(circle at top left,
+        color-mix(in srgb, var(--brand) 30%, transparent),
+        color-mix(in srgb, var(--brand) 70%, transparent));
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.contact-card:hover::before {
+    left: 100%;
+}
+
 .icon-wrapper {
     width: 60px;
     height: 60px;
@@ -167,6 +138,9 @@ a {
     position: relative;
     display: grid;
     place-items: center;
+    background: radial-gradient(circle at top left,
+        color-mix(in srgb, var(--brand) 30%, transparent),
+        color-mix(in srgb, var(--brand) 70%, transparent));
 }
 
 .icon-blur {
@@ -178,6 +152,11 @@ a {
     opacity: 0.4;
 }
 
+.contact-card .icon-wrapper i {
+    color: white;
+    font-size: 2rem;
+}
+
 .card-content {
     position: relative;
     z-index: 1;
@@ -187,32 +166,31 @@ a {
 
 .card-content h3 {
     font-size: 1.3rem;
+    font-weight: 600;
     margin-bottom: 0.5rem;
     color: var(--text-light);
 }
 
 .card-content p {
+    font-size: 1rem;
     color: var(--text-lighter);
-    font-size: 0.9rem;
     margin: 0.3rem 0;
 }
 
-
-.email { --brand: #EA4335; }
-.whatsapp { --brand: #25D366; }
-.instagram { --brand: #E1306C; }
-.telegram { --brand: #0088CC; }
-
-.contact-card .icon-wrapper i {
-    color: white;
-    font-size: 1.8rem;
+.email {
+    --brand: #EA4335;
 }
 
-.icon-wrapper,
-.contact-card:hover {
-    background: radial-gradient(circle at top left, 
-        color-mix(in srgb, var(--brand) 30%, transparent),
-        color-mix(in srgb, var(--brand) 70%, transparent));
+.whatsapp {
+    --brand: #25D366;
+}
+
+.instagram {
+    --brand: #E1306C;
+}
+
+.telegram {
+    --brand: #0088CC;
 }
 
 .footer-glass {
@@ -236,12 +214,6 @@ a {
 }
 
 @media (max-width: 1024px) {
-    .grid-container {
-        grid-template-columns: 1fr;
-        max-width: 500px;
-        padding: 1rem;
-    }
-    
     .gradient-text {
         font-size: 2.2rem;
     }
@@ -252,30 +224,29 @@ a {
         gap: 0.8rem;
         margin: 0.6rem 0;
     }
-    
     .flag-icon {
         width: 1.8em;
         height: 1.3em;
     }
-    
-    .subtitle {
-        font-size: 1rem;
-    }
 }
 
 @media (max-width: 480px) {
+    .grid-container {
+        padding: 1rem;
+    }
     .contact-card {
         min-height: auto;
         padding: 1.2rem;
     }
-    
     .language-line {
         flex-wrap: wrap;
         gap: 0.5rem;
     }
-    
     .flag-icon {
         width: 1.6em;
         height: 1.1em;
+    }
+    .gradient-text {
+        font-size: 2rem;
     }
 }
